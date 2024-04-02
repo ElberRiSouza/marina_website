@@ -34,7 +34,7 @@ urlpatterns = [
     path('news/', news),
     path('booking/', booking),
     path('contact/', contact, name='contact'),
-    
+  
 ]
 
 if settings.DEBUG:

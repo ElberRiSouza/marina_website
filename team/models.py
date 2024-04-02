@@ -8,7 +8,7 @@ class Member(models.Model):
     member_image = models.ImageField(blank=True)
     linkedin = models.URLField(max_length=600, blank=True, null=False)
     orcid = models.URLField(max_length=600, blank=True, null=False)
-    member = models.BooleanField(default=False)
+    
 
     def __str__(self):
         return self.name
@@ -16,7 +16,7 @@ class Member(models.Model):
 
 class Former_member(models.Model):
     name = models.CharField(max_length=200)
-    introduction_text = models.TextField()
+    introduction_text = tinymce_models.HTMLField()
     member_image = models.ImageField(blank=True)
     linkedin = models.URLField(max_length=600, blank=True, null=False)
     orcid = models.URLField(max_length=600, blank=True, null=False)

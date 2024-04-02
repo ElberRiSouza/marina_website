@@ -847,7 +847,7 @@ ul.dropdown-menu li {
 }
 
 .img-team {
-  background: url("../images/slider_img.png") no-repeat center;
+  background: url("../images/slider_img.jpg") no-repeat center;
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
@@ -855,7 +855,7 @@ ul.dropdown-menu li {
   position: relative;
 }
 .slider {
-  background: url("../images/hero-img.png") no-repeat;
+  background: url("../images/hero_img.jpg") no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: 10% 0%;
@@ -1031,7 +1031,7 @@ ul.dropdown-menu li {
   margin-bottom: 0;
 }
 .feature {
-  background: url("../images/aging-img.png"); 
+  background: url("../images/aging_img.jpg"); 
   background-position: 50% 94px;
   display: block;
   position: relative;

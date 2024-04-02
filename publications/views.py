@@ -4,6 +4,7 @@ from django.core.mail import send_mail
 from .models import Publication
 from news.models import Post
 from team.models import Member, Former_member
+from lab.forms import FormWithCaptcha
 
 def index(request):
     return render(request, 'index.html', {})
@@ -70,22 +71,22 @@ def research(request):
     return render(request, 'research.html', {})
 
 def contact(request):
-    if request.method == "POST":
-        subject = request.POST['user_subject']
-        email = request.POST['user_email']    
-        message = request.POST['user_message']
-        name = request.POST["user_name"]
-
-        send_mail(
-            subject,
-            f'Email sent via website \nMessage from: {name} \n' + message,
-            email,
-            ['elber.risouza@gmail.com'],
-           
-        )
-
-        return render(request, 'contact.html', {'name' : name})   
+    if request.method == 'POST':
+        form = FormWithCaptcha(request.POST)
+        if form.is_valid():
+            subject = request.POST['user_subject']
+            email = request.POST['user_email']    
+            message = request.POST['user_message']
+            name = request.POST["user_name"]      
+            send_mail(
+                subject,
+                f'Email sent via website \nMessage from: {name} \nEmail: {email}\n' + message,
+                email,
+                ['elber.risouza@gmail.com'],
+            
+            )  
+        return render(request, 'contact.html', {'name' : name})             
     else:
-        return render(request, 'contact.html', {})
-    
-from django.shortcuts import render
+        
+        form = FormWithCaptcha()
+        return render(request, 'contact.html', {'form': form})
